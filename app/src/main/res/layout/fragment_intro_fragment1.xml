@@ -1,0 +1,29 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="easyway2in.com.billbook.IntroFragment1">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/intro1"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/text"
+        android:textColor="#ffffff"
+        android:text="Now easily\nmonitor your money\nwith\nBillBook"
+        android:gravity="center"
+        android:shadowColor="#000000"
+        android:textSize="35dp"
+        />
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,5 @@
+<root>
+  <item name='android.app.ActionBar android.app.ActionBar.Tab newTab()'>
+    <annotation name='java.lang.annotation.Deprecated' />
+  </item>
+</root>

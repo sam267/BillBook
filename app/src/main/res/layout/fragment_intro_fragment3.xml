@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="easyway2in.com.billbook.IntroFragment3">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/intro3"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="#ffffff"
+        android:text="Set Limits\nand\nBillBook\nwill manage the rest."
+        android:gravity="center"
+        android:id="@+id/text"
+        android:shadowColor="#000000"
+        android:textSize="35dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:id="@+id/MainStart"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
+        android:text="Start Managing"
+        android:background="@drawable/get_started2"
+        android:layout_marginBottom="70dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
