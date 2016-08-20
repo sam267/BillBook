@@ -36,45 +36,95 @@
         android:alpha="0.8"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:elevation="10dp"
         >
+<android.support.design.widget.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
 
         <EditText
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:id="@+id/name"
+
+            android:paddingTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+
             android:hint="Name"
-            android:id="@+id/name"/>
-        <EditText
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="DOB"
-            android:id="@+id/dob"
             />
-        <EditText
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
+</android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email ID"
-            android:id="@+id/email"/>
-        <EditText
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+
+            <EditText
+                android:id="@+id/dob"
+
+                android:paddingTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:hint="DOB"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Profession"
-            android:id="@+id/profession"/>
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+
+            <EditText
+                android:id="@+id/email"
+
+                android:paddingTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+
+            <EditText
+                android:id="@+id/profession"
+
+                android:paddingTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Profession"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:hintTextAppearance="@android:color/black">
+
+            <EditText
+                android:id="@+id/limit"
+                android:paddingTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="First Monthly Limit"
+                android:textColorHint="@android:color/black"
+
+                />
+        </android.support.design.widget.TextInputLayout>
+
 
     </LinearLayout>
     <LinearLayout
@@ -89,13 +139,14 @@
 
 
         <Button
+            android:id="@+id/login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:layout_weight="1"
             android:text="login"
             android:clickable="true"
-            android:id="@+id/login"
+
             android:textColor="#000000"
             android:textStyle="bold"
 

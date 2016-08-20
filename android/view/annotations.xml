@@ -1,0 +1,5 @@
+<root>
+  <item name='android.view.ViewGroup android.view.View getChildAt(int)'>
+    <annotation name='android.support.annotation.NonNull' />
+  </item>
+</root>

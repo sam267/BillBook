@@ -1,14 +1,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:plainpie="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="easyway2in.com.billbook.Fragment3">
+    android:layout_height="match_parent" tools:context="easyway2in.com.billbook.Fragment3"
+    android:padding="16dp"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
+
+
+    <com.github.mikephil.charting.charts.PieChart
+
+        android:layout_marginTop="50dp"
+        android:id="@+id/chart1"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        />
+
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/days_remaining"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/three"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:text="remaining Days"
+        android:textColor="#000000"
+        />
+
 
 </RelativeLayout>

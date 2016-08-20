@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,24 +15,20 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class CreateProfile extends AppCompatActivity {
+public class ResetMonth extends AppCompatActivity {
+EditText limit;
     TextView head,subHead;
-    Button login;
-    EditText name,dob,email, profession, limit;
-    String Name,DOB, Email, Profession, Limit;
+    Button start;
+    String Limit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_profile);
+        setContentView(R.layout.reset_month);
 
         head = (TextView) findViewById(R.id.heading);
         subHead = (TextView) findViewById(R.id.subheading);
 
-        name = (EditText) findViewById(R.id.name);
-        dob = (EditText) findViewById(R.id.dob);
-        email = (EditText) findViewById(R.id.email);
-        profession = (EditText) findViewById(R.id.profession);
         limit = (EditText) findViewById(R.id.limit);
 
 
@@ -43,20 +38,16 @@ public class CreateProfile extends AppCompatActivity {
         head.setTypeface(tf1);
         subHead.setTypeface(tf2);
 
-        login = (Button) findViewById(R.id.login);
+        start = (Button) findViewById(R.id.start);
 
-        login.setOnClickListener(new View.OnClickListener() {
+        start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Name = String.valueOf(name.getText());
-                DOB = String.valueOf(dob.getText());
-                Email = String.valueOf(email.getText());
-                Profession = String.valueOf(profession.getText());
                 Limit = String.valueOf(limit.getText());
 
-                if(Name.equals("") || DOB.equals("") || Email.equals("") || Profession.equals("") || Limit.equals("")) {
-                    Toast.makeText(getApplicationContext(),"Please Enter Your Details",Toast.LENGTH_SHORT).show();
+                if(Limit.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Please Enter Limit", Toast.LENGTH_SHORT).show();
 
                 }
                 else {
@@ -66,17 +57,43 @@ public class CreateProfile extends AppCompatActivity {
                     SimpleDateFormat df = new SimpleDateFormat("dd-mm-yy");
                     String formattedDate = df.format(c.getTime());
 
-                    db.addStartDate(formattedDate);
-                    db.addRecords(Name, DOB, Email, Profession);
+                    db.resetTable_Misc();
+                    db.resetTable_Credit();
+                    db.resetTable_Debit();
+                    db.resetTable_final();
+
                     db.addAmount(Limit);
+                    db.addStartDate(formattedDate);
 
                     Intent intent = new Intent(getApplicationContext(), MainApp.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
                     finish();
                 }
-                }
+            }
+
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_reset_month, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -10,6 +10,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 
@@ -20,7 +22,10 @@ public class IntroFragment3 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_intro_fragment3, container, false);
+
         mainStart = (TextView) v.findViewById(R.id.MainStart);
+        Animation animation1 = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.get_started);
+        mainStart.startAnimation(animation1);
 
         text = (TextView) v.findViewById(R.id.text);
 

@@ -14,31 +14,49 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     ImageView logo;
-    TextView start;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         logo = (ImageView) findViewById(R.id.logo);
-        start = (TextView) findViewById(R.id.start);
+
 
         Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom);
-        Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.get_started);
 
         logo.startAnimation(animation1);
-        start.startAnimation(animation2);
 
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        final DBHandler db = new DBHandler(getApplicationContext());
+        final Thread timerThread = new Thread(){
+            public void run(){
+                try{
+                    sleep(3100);
+                }catch(InterruptedException e){
+                    e.printStackTrace();
+                }finally{
 
-                Intent intent = new Intent(getApplicationContext(),AppIntro.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
-                finish();
+                    if(db.getRecordsRowCount()>0){
+                    Intent intent = new Intent(MainActivity.this,MainApp.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+                    finish();
+                    }
+
+
+                    else{
+                        Intent intent = new Intent(MainActivity.this,AppIntro.class);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+                        finish();
+                    }
+                }
             }
-        });
+        };
+        timerThread.start();
+
 
     }
 

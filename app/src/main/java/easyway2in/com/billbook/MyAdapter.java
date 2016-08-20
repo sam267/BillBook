@@ -3,14 +3,22 @@ package easyway2in.com.billbook;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
+
+import java.util.HashMap;
 
 /**
  * Created by Sameer1 on 01-08-2016.
  */
 public class MyAdapter extends FragmentPagerAdapter {
     int count = 3;
+
+
+
     public MyAdapter(FragmentManager fm) {
         super(fm);
+
     }
 
     @Override
@@ -32,6 +40,7 @@ public class MyAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return count;
     }
+
     @Override
     public CharSequence getPageTitle(int position) {
         String title = "";
@@ -48,6 +57,5 @@ public class MyAdapter extends FragmentPagerAdapter {
         }
         return title;
     }
-
 
 }

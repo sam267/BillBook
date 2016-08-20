@@ -13,4 +13,6 @@
     <string name="three">Fragment3</string>
     <string name="title_activity_app_main">MainApp</string>
     <string name="title_activity_create_profile">CreateProfile</string>
+    <string name="title_activity_reset_month">ResetMonth</string>
+    <string name="title_activity_sign_in">SignIn</string>
 </resources>

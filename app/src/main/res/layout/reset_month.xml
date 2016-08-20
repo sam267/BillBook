@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/holo_blue_light"
+    tools:context="easyway2in.com.billbook.ResetMonth">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start a\nNew Month"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:id="@+id/heading"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:layout_marginTop="35dp"/>
+
+        <TextView
+            android:id="@+id/subheading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter new limit"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:textColor="#ffffff"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:alpha="0.8"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:elevation="10dp"
+            >
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                >
+
+                <EditText
+                    android:id="@+id/limit"
+                    android:paddingTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="New Limit"
+
+
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:clipToPadding="false"
+            >
+
+
+
+            <Button
+                android:id="@+id/start"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:layout_weight="1"
+                android:text="Start"
+                android:clickable="true"
+
+                android:textColor="#000000"
+                android:textStyle="bold"
+
+                />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="\@BillBook"
+            android:textColor="#ffffff"
+            android:layout_gravity="center_horizontal"
+            android:gravity="bottom"
+            android:layout_marginBottom="10dp"
+            />
+    </LinearLayout>
+
+

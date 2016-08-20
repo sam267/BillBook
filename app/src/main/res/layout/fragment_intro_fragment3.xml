@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="easyway2in.com.billbook.IntroFragment3">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,19 +22,21 @@
         />
 
     <TextView
+        android:id="@+id/MainStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:id="@+id/MainStart"
+
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:paddingRight="40dp"
         android:paddingLeft="40dp"
         android:text="Start Managing"
-        android:background="@drawable/get_started2"
+        android:background="@drawable/get_started_state_changed"
         android:layout_marginBottom="70dp"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/white"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:elevation="10dp"/>
 
 </RelativeLayout>

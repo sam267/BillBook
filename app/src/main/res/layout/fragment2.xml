@@ -6,7 +6,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="120dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#e6e6e1"
@@ -51,7 +51,13 @@
         android:clickable="true"
         android:layout_below="@+id/relativeLayout"
         android:layout_alignParentRight="true"/>
-
+   <!-- <Button
+        android:id="@+id/undo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UNDO"
+        android:clickable="true"
+        />-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,6 +74,44 @@
         android:text="________________________________"
 
         android:layout_marginTop="-25dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
+        android:paddingBottom="12dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amount (Rs.)"
+            android:layout_weight="0.33"
+            android:gravity="center_horizontal"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:layout_weight="0.33"
+            android:gravity="center_horizontal"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_weight="0.33"
+            android:gravity="center_horizontal"
+            />
+    </LinearLayout>
+    <ListView
+        android:id="@+id/DebitList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
         android:paddingBottom="15dp"
         />
 
