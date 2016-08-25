@@ -2,8 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
+    <item android:id="@+id/view_stats"
+        android:title="View Statistics"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
     <item android:id="@+id/new_month"
         android:title="Start New Month"
         android:orderInCategory="100"
         app:showAsAction="never" />
+
 </menu>

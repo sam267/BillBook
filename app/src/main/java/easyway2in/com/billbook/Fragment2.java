@@ -52,7 +52,7 @@ if(db.getDebitRowCount()>0) {
             @Override
             public void onClick(View v) {
                 String debitAmount= String.valueOf(debit.getText());
-                Float debitA = Float.valueOf(debitAmount);
+
 
                 if(debitAmount.equals("")) {
                     debit.setText("");
@@ -63,6 +63,7 @@ if(db.getDebitRowCount()>0) {
                     Float amount1 = Float.valueOf(db.getAmount());
                     Float debit1 = Float.valueOf(db.getDebitAmount());
 
+                    Float debitA = Float.valueOf(debitAmount);
                     if((amount1 - debit1 - debitA)<0) {
                         Toast.makeText(getActivity().getApplicationContext(), "Can't spend more than you have", Toast.LENGTH_SHORT).show();
                         debit.setText("");
@@ -103,30 +104,7 @@ if(db.getDebitRowCount()>0) {
             }
         });
 
-        /*undo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String time = db.getLastDebitTime();
-                db.deleteLastDebitRecord(time);
 
-
-                Float debit = Float.valueOf(db.getDebitAmount());
-                Float amount = Float.valueOf(db.getAmount());
-
-                Float Balance = amount - debit;
-                String balance = String.valueOf(Balance);
-
-                Log.d("balance", balance);
-
-                db.updateBalance(String.valueOf(amount), balance);
-
-                String data[][] = db.getDebit();
-
-
-                MyCreditListAdapter adap2 = new MyCreditListAdapter(getActivity().getApplicationContext(), data);
-                list.setAdapter(adap2);
-            }
-        });*/
         return v;
     }
 

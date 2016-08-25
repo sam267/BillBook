@@ -1,16 +1,90 @@
 package easyway2in.com.billbook;
 
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class SignIn extends AppCompatActivity {
+    TextView head, subHead;
+    TextView create_new_profile, cancel, log_in;
+    EditText username, password;
+    String Username, Password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
+
+        head = (TextView) findViewById(R.id.heading1);
+        subHead = (TextView) findViewById(R.id.subheading1);
+        Typeface tf1 = Typeface.createFromAsset(getAssets(),"fonts/ralewaybold.ttf");
+        Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/raleway.ttf");
+
+        head.setTypeface(tf1);
+        subHead.setTypeface(tf2);
+
+        create_new_profile = (TextView) findViewById(R.id.create_profile);
+        cancel = (TextView) findViewById(R.id.cancel);
+        log_in = (TextView) findViewById(R.id.login);
+
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.password);
+
+        username.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+
+        create_new_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(),CreateProfile.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+                finish();
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        log_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Username = String.valueOf(username.getText());
+                Password = String.valueOf(password.getText());
+
+                DBHandler db = new DBHandler(getApplicationContext());
+
+                if(Username.equals("") || Password.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Please Enter Your Details", Toast.LENGTH_SHORT).show();
+                }
+
+                else if(db.getRecordsRowCount()==0) Toast.makeText(getApplicationContext(), "No User Exists. Create new Account to Login", Toast.LENGTH_SHORT).show();
+                else  {
+
+                    String[][] actual_details = db.getLoginDetails();
+                    if(Username.equals(actual_details[0][0]) && Password.equals(actual_details[1][0])){
+                        Intent intent = new Intent(getApplicationContext(), MainApp.class);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
     }
 
     @Override

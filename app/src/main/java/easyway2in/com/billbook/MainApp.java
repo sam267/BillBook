@@ -61,7 +61,12 @@ public class MainApp extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), ResetMonth.class);
             startActivity(intent);
             overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
-            finish();
+            return true;
+        }
+        else if(id == R.id.view_stats){
+            Intent intent = new Intent(getApplicationContext(), Statistics.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
             return true;
         }
 

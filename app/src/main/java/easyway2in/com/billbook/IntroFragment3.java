@@ -36,7 +36,7 @@ public class IntroFragment3 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity().getApplicationContext(),CreateProfile.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(),SignIn.class);
                 startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
                 getActivity().finish();

@@ -32,6 +32,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_NAME = "name";
     private static final String KEY_DOB = "dob";
     private static final String KEY_EMAIL = "email";
+    private static final String KEY_PASS = "password";
     private static final String KEY_PROFESSION = "profession";
 
     private static final String KEY_CREDIT = "Credit";
@@ -55,6 +56,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 + KEY_NAME + " TEXT UNIQUE PRIMARY KEY,"
                 + KEY_DOB + " TEXT,"
                 + KEY_EMAIL + " TEXT,"
+                + KEY_PASS + " TEXT,"
                 + KEY_PROFESSION + " TEXT" + ")";
 
         db.execSQL(CREATE_RECORDS_TABLE);
@@ -143,7 +145,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void addRecords(String name, String dob, String email, String profession) {
+    public void addRecords(String name, String dob, String email, String pass,String profession) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -151,6 +153,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_NAME, name);
         values.put(KEY_DOB, dob);
         values.put(KEY_EMAIL, email);
+        values.put(KEY_PASS, pass);
         values.put(KEY_PROFESSION, profession);
 
         db.insert(TABLE_RECORDS, null, values);
@@ -244,6 +247,25 @@ public class DBHandler extends SQLiteOpenHelper {
             data[1][i] = cursor.getString(1);
             data[2][i] = cursor.getString(2);
             i++;
+            cursor.moveToNext();
+            count--;
+        }
+        cursor.close();
+        db.close();
+        return data;
+    }
+    public String[][] getLoginDetails() {
+        String data [][] ;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM "+ TABLE_RECORDS;
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        int count = cursor.getCount();
+        data = new String[2][count];
+
+        while(count > 0) {
+            data[0][0] = cursor.getString(2);
+            data[1][0] = cursor.getString(3);
             cursor.moveToNext();
             count--;
         }

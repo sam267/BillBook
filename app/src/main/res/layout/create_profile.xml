@@ -1,9 +1,8 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     tools:context="easyway2in.com.billbook.CreateProfile"
     android:background="@android:color/holo_blue_light">
 
@@ -25,7 +24,8 @@
         android:layout_height="wrap_content"
         android:text="Please enter your details"
         android:gravity="center"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/heading"
         android:textColor="#ffffff"/>
 
     <LinearLayout
@@ -36,9 +36,10 @@
         android:alpha="0.8"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:elevation="10dp"
+        android:layout_below="@+id/subheading"
         >
 <android.support.design.widget.TextInputLayout
     android:layout_width="match_parent"
@@ -82,11 +83,26 @@
 
             <EditText
                 android:id="@+id/email"
-
+                android:textCursorDrawable="@null"
                 android:paddingTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+
+            <EditText
+                android:id="@+id/pass"
+                android:paddingTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Set Password"
                 />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -120,48 +136,67 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="First Monthly Limit"
-                android:textColorHint="@android:color/black"
+
 
                 />
         </android.support.design.widget.TextInputLayout>
 
 
     </LinearLayout>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:clipToPadding="false"
-        >
-
-
-
-        <Button
-            android:id="@+id/login"
-            android:layout_width="0dp"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:layout_weight="1"
-            android:text="login"
-            android:clickable="true"
-
-            android:textColor="#000000"
-            android:textStyle="bold"
+            android:background="@drawable/line"
 
             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/line">
+            <TextView
+                android:id="@+id/cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CANCEL"
+                android:textColor="#ffffff"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:textSize="20dp"
+                android:background="@drawable/box_button"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_margin="5dp"
+                android:textSize="20dp"
+                android:text="LOGIN"
+                android:textColor="#ffffff"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@drawable/box_button"/>
+
+        </LinearLayout>
+    </RelativeLayout>
 
 
-    </LinearLayout>
+</RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="\@BillBook"
-        android:textColor="#ffffff"
-        android:layout_gravity="center_horizontal"
-        android:gravity="bottom"
-        android:layout_marginBottom="10dp"
-        />
-</LinearLayout>
