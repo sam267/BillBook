@@ -1,9 +1,15 @@
 package easyway2in.com.billbook;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SignIn extends AppCompatActivity {
+
     TextView head, subHead;
     TextView create_new_profile, cancel, log_in;
     EditText username, password;
@@ -22,6 +29,9 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
+
+
+
 
         head = (TextView) findViewById(R.id.heading1);
         subHead = (TextView) findViewById(R.id.subheading1);
@@ -62,6 +72,12 @@ public class SignIn extends AppCompatActivity {
                 Username = String.valueOf(username.getText());
                 Password = String.valueOf(password.getText());
 
+
+                if(Password.length()!=4 || !isNumeric(Password)) {
+                    Toast.makeText(getApplicationContext(),"Enter 4-digit Pin",Toast.LENGTH_SHORT).show();
+                    password.setText("");
+                }
+                Password = String.valueOf(password.getText());
                 DBHandler db = new DBHandler(getApplicationContext());
 
                 if(Username.equals("") || Password.equals("")) {
@@ -107,5 +123,13 @@ public class SignIn extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    private boolean isNumeric(String str)
+    {
+        for (char c : str.toCharArray())
+        {
+            if (!Character.isDigit(c)) return false;
+        }
+        return true;
     }
 }

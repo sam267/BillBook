@@ -30,10 +30,9 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String TABLE_MISC = "MiscDetails";
 
     private static final String KEY_NAME = "name";
-    private static final String KEY_DOB = "dob";
-    private static final String KEY_EMAIL = "email";
+    private static final String KEY_USERNAME = "username";
     private static final String KEY_PASS = "password";
-    private static final String KEY_PROFESSION = "profession";
+
 
     private static final String KEY_CREDIT = "Credit";
     private static final String KEY_DEBIT = "Debit";
@@ -54,10 +53,8 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_RECORDS_TABLE = "CREATE TABLE " + TABLE_RECORDS + "("
                 + KEY_NAME + " TEXT UNIQUE PRIMARY KEY,"
-                + KEY_DOB + " TEXT,"
-                + KEY_EMAIL + " TEXT,"
-                + KEY_PASS + " TEXT,"
-                + KEY_PROFESSION + " TEXT" + ")";
+                + KEY_USERNAME + " TEXT,"
+                + KEY_PASS + " TEXT" + ")";
 
         db.execSQL(CREATE_RECORDS_TABLE);
 
@@ -145,16 +142,15 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void addRecords(String name, String dob, String email, String pass,String profession) {
+    public void addRecords(String name, String username, String pass) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, name);
-        values.put(KEY_DOB, dob);
-        values.put(KEY_EMAIL, email);
+        values.put(KEY_USERNAME, username);
         values.put(KEY_PASS, pass);
-        values.put(KEY_PROFESSION, profession);
+
 
         db.insert(TABLE_RECORDS, null, values);
         db.close();
@@ -264,8 +260,8 @@ public class DBHandler extends SQLiteOpenHelper {
         data = new String[2][count];
 
         while(count > 0) {
-            data[0][0] = cursor.getString(2);
-            data[1][0] = cursor.getString(3);
+            data[0][0] = cursor.getString(1);
+            data[1][0] = cursor.getString(2);
             cursor.moveToNext();
             count--;
         }

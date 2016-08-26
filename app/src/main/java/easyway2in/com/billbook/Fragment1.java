@@ -1,9 +1,12 @@
 package easyway2in.com.billbook;
 
 import android.app.Activity;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.support.design.widget.FloatingActionButton;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +25,7 @@ import java.util.Calendar;
 
 public class Fragment1 extends Fragment {
     EditText credit ;
-    TextView credited;
+    FloatingActionButton credited;
     ListView list1;
     /*Button undo;*/
 
@@ -48,7 +51,9 @@ if(db.getCreditRowCount()>0) {
     list1.setAdapter(adapter1);
 }
 
-        credited = (TextView) v.findViewById(R.id.credited);
+        credited = (FloatingActionButton) v.findViewById(R.id.credited);
+        credited.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5bef57")));
+        credited.setRippleColor(Color.parseColor("#4eaa4b"));
 
         credited.setOnClickListener(new View.OnClickListener() {
             @Override

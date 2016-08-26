@@ -21,8 +21,8 @@ import java.util.Calendar;
 public class CreateProfile extends AppCompatActivity {
     TextView head,subHead;
     TextView login, cancel;
-    EditText name,dob,email,pass, profession, limit;
-    String Name,DOB, Email,Pass, Profession, Limit;
+    EditText name, username, pass, limit;
+    String Name,Username,Pass, Limit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +32,8 @@ public class CreateProfile extends AppCompatActivity {
 
 
         name = (EditText) findViewById(R.id.name);
-        dob = (EditText) findViewById(R.id.dob);
-        email = (EditText) findViewById(R.id.email);
+        username = (EditText) findViewById(R.id.username);
         pass = (EditText) findViewById(R.id.pass);
-        profession = (EditText) findViewById(R.id.profession);
         limit = (EditText) findViewById(R.id.limit);
 
         pass.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
@@ -51,20 +49,39 @@ public class CreateProfile extends AppCompatActivity {
         login = (TextView) findViewById(R.id.login);
         cancel = (TextView) findViewById(R.id.cancel);
 
+
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Name = String.valueOf(name.getText());
-                DOB = String.valueOf(dob.getText());
-                Email = String.valueOf(email.getText());
+                Username = String.valueOf(username.getText());
                 Pass = String.valueOf(pass.getText());
-                Profession = String.valueOf(profession.getText());
+
+                if(Pass.length()!=4 || !isNumeric(Pass)) {
+                    Toast.makeText(getApplicationContext(),"Please Enter Four Digit Pass only",Toast.LENGTH_SHORT).show();
+                    pass.setText("");
+                }
+
                 Limit = String.valueOf(limit.getText());
 
-                if(Name.equals("") || DOB.equals("") || Email.equals("") || Pass.equals("") || Profession.equals("") || Limit.equals("")) {
-                    Toast.makeText(getApplicationContext(),"Please Enter Your Details",Toast.LENGTH_SHORT).show();
+                if(!isNumeric(Limit)) {
+                    Toast.makeText(getApplicationContext(),"Please Enter Digits Only",Toast.LENGTH_SHORT).show();
+                    limit.setText("");
+                }
 
+                Pass = String.valueOf(pass.getText());
+                Limit = String.valueOf(limit.getText());
+
+                if(Name.equals("") || Username.equals("")) {
+                    Toast.makeText(getApplicationContext(),"Please Enter Your Details",Toast.LENGTH_SHORT).show();
+                }
+                else if(Pass.equals("")){
+                    Toast.makeText(getApplicationContext(),"Please Enter Four digit Pass Only",Toast.LENGTH_SHORT).show();
+                }
+                else if(Limit.equals("")){
+                    Toast.makeText(getApplicationContext(),"Please Enter Correct Amount",Toast.LENGTH_SHORT).show();
                 }
                 else {
                     DBHandler db = new DBHandler(getApplicationContext());
@@ -81,7 +98,7 @@ public class CreateProfile extends AppCompatActivity {
 
 
                     db.addStartDate(formattedDate);
-                    db.addRecords(Name, DOB, Email, Pass, Profession);
+                    db.addRecords(Name, Username, Pass);
                     db.addAmount(Limit);
 
                     Intent intent = new Intent(getApplicationContext(), MainApp.class);
@@ -100,6 +117,14 @@ public class CreateProfile extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    private boolean isNumeric(String str)
+    {
+        for (char c : str.toCharArray())
+        {
+            if (!Character.isDigit(c)) return false;
+        }
+        return true;
     }
 
 }

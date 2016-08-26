@@ -2,6 +2,8 @@ package easyway2in.com.billbook;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -15,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -81,11 +84,12 @@ public class Fragment3 extends Fragment {
 
         BALANCE = db.getBalance();
         LIMIT = db.getAmount();
-
+        Float AMOUNT = Float.valueOf(LIMIT);
+        balance = Float.valueOf(BALANCE);
 
         amount_spent = Math.abs(Float.valueOf(LIMIT) - Float.valueOf(BALANCE));
         amount_left = Float.valueOf(BALANCE);
-        balance = Float.valueOf(BALANCE);
+
 
         spent_percentage = (amount_spent /(amount_spent + amount_left)) * 100;
         left_percentage = (amount_left /(amount_spent + amount_left)) * 100;
@@ -180,17 +184,30 @@ public class Fragment3 extends Fragment {
             days_left = 30 - (present - begin);
         else days_left = 30 - (present + 30 - begin);
 
-        Log.d("check", String.valueOf(days_left));
 
         remaining.setText(String.valueOf(days_left)+" days remaining...");
 
-
         if(days_left==0){
-            Intent intent = new Intent(getActivity().getApplicationContext(), ResetMonth.class);
-            startActivity(intent);
-            getActivity().overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
-            getActivity().finish();
+            AlertDialog ad = new AlertDialog.Builder(this.getActivity())
+                    .create();
+            ad.setCancelable(false);
+            ad.setTitle("Month Over!!");
+            ad.setMessage("Lets start a new Month...");
+            ad.setButton(this.getActivity().getString(R.string.ok), new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(getActivity().getApplicationContext(), ResetMonth.class);
+                    startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+                    getActivity().finish();
+
+                    dialog.dismiss();
+                }
+            });
+            ad.show();
         }
+
+
 
 
     }

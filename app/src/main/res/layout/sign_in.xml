@@ -3,11 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="easyway2in.com.billbook.SignIn"
+    android:background="#000000"
     >
 <ImageView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:src="@drawable/back"
+    android:alpha="0.3"
     android:scaleType="centerCrop"
     />
     <LinearLayout
@@ -41,23 +43,29 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="E-Mail"
+            android:hint="Username"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#ffffff"
-            android:padding="7dp"/>
+            android:layout_marginBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:background="@drawable/log_in"
+            />
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="4-digit pin"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             android:padding="7dp"
-            android:background="#ffffff"/>
+            android:background="@drawable/log_in"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

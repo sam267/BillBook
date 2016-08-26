@@ -1,9 +1,15 @@
 package easyway2in.com.billbook;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
 import android.util.Log;
@@ -23,7 +29,7 @@ import java.util.Calendar;
 public class Fragment2 extends Fragment {
 
     EditText debit ;
-    TextView debited;
+    FloatingActionButton debited;
     /*Button undo;*/
 
     ListView list;
@@ -39,19 +45,42 @@ public class Fragment2 extends Fragment {
         list = (ListView) v.findViewById(R.id.DebitList);
 
         final DBHandler db = new DBHandler(getActivity().getApplicationContext());
+        Float amount = Float.valueOf(db.getAmount());
+        Float balance = Float.valueOf(db.getBalance());
+
+        if(balance<(0.2*amount)){
+            AlertDialog ad = new AlertDialog.Builder(this.getActivity())
+                    .create();
+            ad.setCancelable(false);
+            ad.setTitle("Warning!!");
+            ad.setMessage("You are close to spending all of your total amount, be careful :)");
+            ad.setButton(this.getActivity().getString(R.string.ok), new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            ad.show();
+        }
+
 if(db.getDebitRowCount()>0) {
     String data[][] = db.getDebit();
+
 
     MyDebitListAdapter adapter2 = new MyDebitListAdapter(getActivity().getApplicationContext(), data);
     list.setAdapter(adapter2);
 }
 
-        debited = (TextView) v.findViewById(R.id.debited);
+        debited = (FloatingActionButton) v.findViewById(R.id.debited);
+        debited.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#fa2e2e")));
+        debited.setRippleColor(Color.parseColor("#a91f1f"));
+
 
         debited.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String debitAmount= String.valueOf(debit.getText());
+
 
 
                 if(debitAmount.equals("")) {
@@ -95,6 +124,22 @@ if(db.getDebitRowCount()>0) {
 
                         MyDebitListAdapter adap2 = new MyDebitListAdapter(getActivity().getApplicationContext(), data);
                         list.setAdapter(adap2);
+
+                        if(Float.valueOf(balance)<(0.2*amount)){
+
+                            AlertDialog ad = new AlertDialog.Builder(getActivity())
+                                    .create();
+                            ad.setCancelable(false);
+                            ad.setTitle("Warning!!");
+                            ad.setMessage("You have spent more than 80% of your total amount, be careful :)");
+                            ad.setButton(getActivity().getString(R.string.ok), new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            ad.show();
+                        }
                     }
 
 

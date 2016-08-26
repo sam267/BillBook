@@ -36,10 +36,11 @@
         android:alpha="0.8"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:elevation="10dp"
-        android:layout_below="@+id/subheading"
+
         >
 <android.support.design.widget.TextInputLayout
     android:layout_width="match_parent"
@@ -65,31 +66,15 @@
             android:layout_marginLeft="10dp">
 
             <EditText
-                android:id="@+id/dob"
-
+                android:id="@+id/username"
                 android:paddingTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:hint="DOB"
+                android:hint="Set Username"
                 />
         </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
 
-            <EditText
-                android:id="@+id/email"
-                android:textCursorDrawable="@null"
-                android:paddingTop="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
-                />
-        </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,9 +87,10 @@
                 android:paddingTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Set Password"
+                android:hint="Set 4-digit Access Pin"
                 />
         </android.support.design.widget.TextInputLayout>
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,29 +99,11 @@
             android:layout_marginLeft="10dp">
 
             <EditText
-                android:id="@+id/profession"
-
-                android:paddingTop="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Profession"
-                />
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            app:hintTextAppearance="@android:color/black">
-
-            <EditText
                 android:id="@+id/limit"
                 android:paddingTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="First Monthly Limit"
+                android:hint="Set First Monthly Limit"
 
 
                 />

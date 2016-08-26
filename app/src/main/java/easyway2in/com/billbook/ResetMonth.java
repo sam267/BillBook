@@ -1,7 +1,9 @@
 package easyway2in.com.billbook;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -45,30 +47,59 @@ EditText limit;
             public void onClick(View v) {
 
                 Limit = String.valueOf(limit.getText());
-
+                if(!isNumeric(Limit)) {
+                    Toast.makeText(getApplicationContext(),"Please Enter Digits Only",Toast.LENGTH_SHORT).show();
+                    limit.setText("");
+                }
+                Limit = String.valueOf(limit.getText());
                 if(Limit.equals("")) {
                     Toast.makeText(getApplicationContext(), "Please Enter Limit", Toast.LENGTH_SHORT).show();
 
                 }
                 else {
-                    DBHandler db = new DBHandler(getApplicationContext());
 
-                    Calendar c = Calendar.getInstance();
-                    SimpleDateFormat df = new SimpleDateFormat("dd-mm-yy");
-                    String formattedDate = df.format(c.getTime());
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(ResetMonth.this);
+                    alertDialog.setTitle("Confirm Reset...");
+                    alertDialog.setMessage("Are you sure you want to start a new Month?");
 
-                    db.resetTable_Misc();
-                    db.resetTable_Credit();
-                    db.resetTable_Debit();
-                    db.resetTable_final();
 
-                    db.addAmount(Limit);
-                    db.addStartDate(formattedDate);
+                    // Setting Positive "Yes" Button
+                    alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,int which) {
 
-                    Intent intent = new Intent(getApplicationContext(), MainApp.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
-                    finish();
+                            DBHandler db = new DBHandler(getApplicationContext());
+
+                            Calendar c = Calendar.getInstance();
+                            SimpleDateFormat df = new SimpleDateFormat("dd-mm-yy");
+                            String formattedDate = df.format(c.getTime());
+
+                            db.resetTable_Misc();
+                            db.resetTable_Credit();
+                            db.resetTable_Debit();
+                            db.resetTable_final();
+
+                            db.addAmount(Limit);
+                            db.addStartDate(formattedDate);
+
+                            finish();
+                            Intent intent = new Intent(getApplicationContext(), MainApp.class);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+                            finish();
+                        }
+                    });
+
+                    // Setting Negative "NO" Button
+                    alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            dialog.cancel();
+                        }
+                    });
+
+                    // Showing Alert Message
+                    alertDialog.show();
+
                 }
             }
 
@@ -95,5 +126,23 @@ EditText limit;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainApp.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);
+        finish();
+    }
+
+
+    private boolean isNumeric(String str)
+    {
+        for (char c : str.toCharArray())
+        {
+            if (!Character.isDigit(c)) return false;
+        }
+        return true;
     }
 }

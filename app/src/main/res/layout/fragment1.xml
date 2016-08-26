@@ -38,20 +38,16 @@
 
     </RelativeLayout>
 
-    <TextView
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/credited"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/credited_money"
-        android:text="+"
-        android:textColor="#ffffff"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="right"
-        android:gravity="center_horizontal|center_vertical"
-        android:textSize="30dp"
         android:elevation="5dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="5dp"
         android:clickable="true"
+        android:src="@drawable/plus"
         android:layout_below="@+id/relativeLayout"
         android:layout_alignParentRight="true"/>
 
