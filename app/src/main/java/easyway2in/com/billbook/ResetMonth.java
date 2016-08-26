@@ -60,7 +60,7 @@ EditText limit;
 
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(ResetMonth.this);
                     alertDialog.setTitle("Confirm Reset...");
-                    alertDialog.setMessage("Are you sure you want to start a new Month?");
+                    alertDialog.setMessage("Are you sure you want to start a new Month? Starting a new month before 30 days may result in loss of data of the ongoing month.");
 
 
                     // Setting Positive "Yes" Button

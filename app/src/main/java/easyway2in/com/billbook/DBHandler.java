@@ -28,6 +28,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String TABLE_DEBIT = "DebitDetails";
     private static final String TABLE_Final = "FinalDetails";
     private static final String TABLE_MISC = "MiscDetails";
+    private static final String TABLE_STATS = "Statistics";
 
     private static final String KEY_NAME = "name";
     private static final String KEY_USERNAME = "username";
@@ -44,6 +45,8 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_BALANCE = "balance";
 
     private static final String KEY_STARTDATE = "StartDate";
+
+    private static final String KEY_SPENT = "Spent_Amount";
 
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -84,6 +87,12 @@ public class DBHandler extends SQLiteOpenHelper {
                 + KEY_STARTDATE + " TEXT" + ")";
         db.execSQL(CREATE_MISC_TABLE);
 
+        String CREATE_STATS_TABLE = "CREATE TABLE " + TABLE_STATS + "("
+                + KEY_SPENT + " TEXT" + ")";
+
+
+        db.execSQL(CREATE_STATS_TABLE);
+
     }
 
     @Override
@@ -93,6 +102,8 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DEBIT);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CREDIT);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_Final);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MISC);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_STATS);
         onCreate(db);
     }
 
@@ -105,6 +116,17 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.insert(TABLE_MISC, null, values);
         db.close();
+    }
+
+    public void addMonthlySpentAmount(String expenditure) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_SPENT, expenditure);
+
+        db.insert(TABLE_STATS, null, values);
+        db.close();
+
     }
 
     public void addCredit(String credit, String date, String time) {
@@ -206,6 +228,17 @@ public class DBHandler extends SQLiteOpenHelper {
 
         return rowCount;
     }
+    public int getStatsRowCount() {
+        String countQuery = "SELECT  * FROM " + TABLE_STATS;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int rowCount = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        return rowCount;
+    }
 
     public String[][] getCredit() {
         String data [][] ;
@@ -262,6 +295,27 @@ public class DBHandler extends SQLiteOpenHelper {
         while(count > 0) {
             data[0][0] = cursor.getString(1);
             data[1][0] = cursor.getString(2);
+            cursor.moveToNext();
+            count--;
+        }
+        cursor.close();
+        db.close();
+        return data;
+    }
+    public String[] getMonthlyExpenditures() {
+        String data [] ;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM "+ TABLE_STATS;
+
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        int count = cursor.getCount();
+        data = new String[count];
+        while(count > 0) {
+            data[count-1] = cursor.getString(0);
+
             cursor.moveToNext();
             count--;
         }

@@ -74,7 +74,9 @@ public class Fragment3 extends Fragment {
         Legend l = mChart.getLegend();
         l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART);
 
+
         addData();
+
 
         return v;
     }
@@ -148,6 +150,7 @@ public class Fragment3 extends Fragment {
 
         // update pie chart
         mChart.invalidate();
+        mChart.notifyDataSetChanged();
     }
 
     private PieData generatePieData() {
@@ -196,6 +199,11 @@ public class Fragment3 extends Fragment {
             ad.setButton(this.getActivity().getString(R.string.ok), new DialogInterface.OnClickListener() {
 
                 public void onClick(DialogInterface dialog, int which) {
+                    DBHandler db = new DBHandler(getActivity().getApplicationContext());
+
+                    String total_spent = db.getDebitAmount();
+                    db.addMonthlySpentAmount(total_spent);
+
                     Intent intent = new Intent(getActivity().getApplicationContext(), ResetMonth.class);
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out);

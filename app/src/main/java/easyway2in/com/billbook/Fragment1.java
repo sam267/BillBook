@@ -52,7 +52,7 @@ if(db.getCreditRowCount()>0) {
 }
 
         credited = (FloatingActionButton) v.findViewById(R.id.credited);
-        credited.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5bef57")));
+        credited.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#3eed35")));
         credited.setRippleColor(Color.parseColor("#4eaa4b"));
 
         credited.setOnClickListener(new View.OnClickListener() {

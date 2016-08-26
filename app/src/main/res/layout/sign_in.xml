@@ -66,6 +66,26 @@
             android:paddingBottom="8dp"
             android:padding="7dp"
             android:background="@drawable/log_in"/>
+
+        <TextView
+            android:id="@+id/login"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="20dp"
+            android:text="LOGIN"
+            android:textColor="#ffffff"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:background="@drawable/box_button_dark"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -130,6 +150,20 @@
         android:layout_marginBottom="5dp"
         android:layout_below="@+id/line">
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <TextView
             android:id="@+id/cancel"
             android:clickable="true"
             android:layout_width="match_parent"
@@ -143,27 +177,13 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="16dp"
             android:textSize="20dp"
             android:background="@drawable/box_button_dark"
             android:gravity="center_horizontal|center_vertical"
             android:layout_weight="1"
             />
-        <TextView
-            android:id="@+id/login"
-            android:clickable="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_margin="5dp"
-            android:textSize="20dp"
-            android:text="LOGIN"
-            android:textColor="#ffffff"
-            android:layout_weight="1"
-            android:gravity="center_horizontal|center_vertical"
-            android:background="@drawable/box_button_dark"/>
+
 
     </LinearLayout>
     </RelativeLayout>

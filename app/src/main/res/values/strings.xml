@@ -16,5 +16,5 @@
     <string name="title_activity_reset_month">ResetMonth</string>
     <string name="title_activity_sign_in">SignIn</string>
     <string name="title_activity_statistics">Statistics</string>
-    <string name="ok">Okay</string>
+    <string name="ok">OK</string>
 </resources>
